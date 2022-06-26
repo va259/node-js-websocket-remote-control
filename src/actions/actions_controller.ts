@@ -13,26 +13,26 @@ export const handle = async (command: string[]) => {
       return `mouse_position ${x},${y}\0`;
     case 'mouse_up':
       robot.moveMouse(x, y - length);
-      return `mouse_up\0`;
+      return action;
     case 'mouse_down':
       robot.moveMouse(x, y + length);
-      return `mouse_down\0`;
+      return action;
     case 'mouse_left':
       robot.moveMouse(x - length, y);
-      return `mouse_left\0`;
+      return action;
     case 'mouse_right':
       robot.moveMouse(x + length, y);
-      return `mouse_right\0`;
+      return action;
     case 'draw_circle':
       drawCircle(length);
-      return `draw_circle\0`;
+      return action;
     case 'draw_rectangle':
       const width: number = parseInt(command[2]);
       drawRectangle(length, width);
-      return `draw_rectangle\0`;
+      return action;
     case 'draw_square':
       drawSquare(length);
-      return `draw_square\0`;
+      return action;
     case 'prnt_scrn':
       const base64 = await printScreen();
       return `prnt_scrn ${base64}\0`;
